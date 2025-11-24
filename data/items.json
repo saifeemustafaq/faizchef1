@@ -1,0 +1,441 @@
+{
+  "stores": [
+    "Costco",
+    "Walmart",
+    "Safeway",
+    "Trader Joe's",
+    "Whole Foods"
+  ],
+  "units": [
+    {
+      "name": "Pounds",
+      "abbreviation": "lbs"
+    },
+    {
+      "name": "Packets",
+      "abbreviation": "pkt"
+    },
+    {
+      "name": "Bunches",
+      "abbreviation": "bunch"
+    },
+    {
+      "name": "Cases",
+      "abbreviation": "case"
+    },
+    {
+      "name": "Gallons",
+      "abbreviation": "gal"
+    },
+    {
+      "name": "Ounces",
+      "abbreviation": "oz"
+    },
+    {
+      "name": "Grams",
+      "abbreviation": "g"
+    },
+    {
+      "name": "Bottles",
+      "abbreviation": "btl"
+    },
+    {
+      "name": "Cans",
+      "abbreviation": "can"
+    },
+    {
+      "name": "Pieces",
+      "abbreviation": "pc"
+    },
+    {
+      "name": "Boxes",
+      "abbreviation": "box"
+    },
+    {
+      "name": "Count",
+      "abbreviation": "ct"
+    },
+    {
+      "name": "Kilograms",
+      "abbreviation": "kg"
+    }
+  ],
+  "items": [
+    {
+      "id": "1",
+      "name": "Tomatoes (roma)",
+      "category": "Produce (veg & fruit)",
+      "store": "Walmart",
+      "unit": "lbs"
+    },
+    {
+      "id": "2",
+      "name": "Onions (yellow)",
+      "category": "Produce (veg & fruit)",
+      "store": "Costco",
+      "unit": "lbs"
+    },
+    {
+      "id": "3",
+      "name": "Potatoes (russet)",
+      "category": "Produce (veg & fruit)",
+      "store": "Safeway",
+      "unit": "lbs"
+    },
+    {
+      "id": "4",
+      "name": "Carrots",
+      "category": "Produce (veg & fruit)",
+      "store": "Trader Joe's",
+      "unit": "lbs"
+    },
+    {
+      "id": "5",
+      "name": "Apples (gala)",
+      "category": "Produce (veg & fruit)",
+      "store": "Whole Foods",
+      "unit": "lbs"
+    },
+    {
+      "id": "6",
+      "name": "Bananas",
+      "category": "Produce (veg & fruit)",
+      "store": "Costco",
+      "unit": "lbs"
+    },
+    {
+      "id": "7",
+      "name": "Bell peppers (mixed)",
+      "category": "Produce (veg & fruit)",
+      "store": "Walmart",
+      "unit": "lbs"
+    },
+    {
+      "id": "8",
+      "name": "Spinach (fresh)",
+      "category": "Produce (veg & fruit)",
+      "store": "Safeway",
+      "unit": "bunch"
+    },
+    {
+      "id": "9",
+      "name": "Cilantro (fresh)",
+      "category": "Fresh herbs & aromatics",
+      "store": "Trader Joe's",
+      "unit": "bunch"
+    },
+    {
+      "id": "10",
+      "name": "Garlic (bulbs)",
+      "category": "Fresh herbs & aromatics",
+      "store": "Costco",
+      "unit": "lbs"
+    },
+    {
+      "id": "11",
+      "name": "Ginger (fresh)",
+      "category": "Fresh herbs & aromatics",
+      "store": "Whole Foods",
+      "unit": "lbs"
+    },
+    {
+      "id": "12",
+      "name": "Basil (fresh)",
+      "category": "Fresh herbs & aromatics",
+      "store": "Walmart",
+      "unit": "bunch"
+    },
+    {
+      "id": "13",
+      "name": "Milk (whole)",
+      "category": "Dairy and Eggs",
+      "store": "Safeway",
+      "unit": "gal"
+    },
+    {
+      "id": "14",
+      "name": "Eggs (large)",
+      "category": "Dairy and Eggs",
+      "store": "Costco",
+      "unit": "ct"
+    },
+    {
+      "id": "15",
+      "name": "Butter (unsalted)",
+      "category": "Dairy and Eggs",
+      "store": "Trader Joe's",
+      "unit": "lbs"
+    },
+    {
+      "id": "16",
+      "name": "Yogurt (plain)",
+      "category": "Dairy and Eggs",
+      "store": "Whole Foods",
+      "unit": "oz"
+    },
+    {
+      "id": "17",
+      "name": "Bread (whole wheat)",
+      "category": "Bakery",
+      "store": "Walmart",
+      "unit": "pc"
+    },
+    {
+      "id": "18",
+      "name": "Baguette (french)",
+      "category": "Bakery",
+      "store": "Safeway",
+      "unit": "pc"
+    },
+    {
+      "id": "19",
+      "name": "Tortillas (flour)",
+      "category": "Bakery",
+      "store": "Costco",
+      "unit": "pkt"
+    },
+    {
+      "id": "20",
+      "name": "Rice (basmati)",
+      "category": "Dry goods & grains",
+      "store": "Trader Joe's",
+      "unit": "lbs"
+    },
+    {
+      "id": "21",
+      "name": "Pasta (penne)",
+      "category": "Dry goods & grains",
+      "store": "Whole Foods",
+      "unit": "lbs"
+    },
+    {
+      "id": "22",
+      "name": "Flour (all-purpose)",
+      "category": "Dry goods & grains",
+      "store": "Costco",
+      "unit": "lbs"
+    },
+    {
+      "id": "23",
+      "name": "Oats (rolled)",
+      "category": "Dry goods & grains",
+      "store": "Walmart",
+      "unit": "lbs"
+    },
+    {
+      "id": "24",
+      "name": "Quinoa",
+      "category": "Dry goods & grains",
+      "store": "Safeway",
+      "unit": "lbs"
+    },
+    {
+      "id": "25",
+      "name": "Chickpeas (dry)",
+      "category": "Legumes & pulses (dry)",
+      "store": "Trader Joe's",
+      "unit": "lbs"
+    },
+    {
+      "id": "26",
+      "name": "Lentils (red)",
+      "category": "Legumes & pulses (dry)",
+      "store": "Whole Foods",
+      "unit": "lbs"
+    },
+    {
+      "id": "27",
+      "name": "Black beans (dry)",
+      "category": "Legumes & pulses (dry)",
+      "store": "Costco",
+      "unit": "lbs"
+    },
+    {
+      "id": "28",
+      "name": "Kidney beans (dry)",
+      "category": "Legumes & pulses (dry)",
+      "store": "Walmart",
+      "unit": "lbs"
+    },
+    {
+      "id": "29",
+      "name": "Olive oil (extra virgin)",
+      "category": "Oils & fats",
+      "store": "Safeway",
+      "unit": "btl"
+    },
+    {
+      "id": "30",
+      "name": "Vegetable oil",
+      "category": "Oils & fats",
+      "store": "Costco",
+      "unit": "gal"
+    },
+    {
+      "id": "31",
+      "name": "Coconut oil",
+      "category": "Oils & fats",
+      "store": "Trader Joe's",
+      "unit": "oz"
+    },
+    {
+      "id": "32",
+      "name": "Cumin seeds",
+      "category": "Spices (whole)",
+      "store": "Whole Foods",
+      "unit": "oz"
+    },
+    {
+      "id": "33",
+      "name": "Coriander seeds",
+      "category": "Spices (whole)",
+      "store": "Walmart",
+      "unit": "oz"
+    },
+    {
+      "id": "34",
+      "name": "Black peppercorns",
+      "category": "Spices (whole)",
+      "store": "Safeway",
+      "unit": "oz"
+    },
+    {
+      "id": "35",
+      "name": "Turmeric powder",
+      "category": "Spices & masalas (ground)",
+      "store": "Costco",
+      "unit": "oz"
+    },
+    {
+      "id": "36",
+      "name": "Chili powder",
+      "category": "Spices & masalas (ground)",
+      "store": "Trader Joe's",
+      "unit": "oz"
+    },
+    {
+      "id": "37",
+      "name": "Garam masala",
+      "category": "Spices & masalas (ground)",
+      "store": "Whole Foods",
+      "unit": "oz"
+    },
+    {
+      "id": "38",
+      "name": "Paprika",
+      "category": "Spices & masalas (ground)",
+      "store": "Walmart",
+      "unit": "oz"
+    },
+    {
+      "id": "39",
+      "name": "Soy sauce",
+      "category": "Condiments & sauces",
+      "store": "Safeway",
+      "unit": "btl"
+    },
+    {
+      "id": "40",
+      "name": "Tomato paste",
+      "category": "Condiments & sauces",
+      "store": "Costco",
+      "unit": "can"
+    },
+    {
+      "id": "41",
+      "name": "Hot sauce",
+      "category": "Condiments & sauces",
+      "store": "Trader Joe's",
+      "unit": "btl"
+    },
+    {
+      "id": "42",
+      "name": "Almonds (raw)",
+      "category": "Nuts & baking",
+      "store": "Whole Foods",
+      "unit": "lbs"
+    },
+    {
+      "id": "43",
+      "name": "Walnuts",
+      "category": "Nuts & baking",
+      "store": "Costco",
+      "unit": "lbs"
+    },
+    {
+      "id": "44",
+      "name": "Baking powder",
+      "category": "Nuts & baking",
+      "store": "Walmart",
+      "unit": "oz"
+    },
+    {
+      "id": "45",
+      "name": "Peas (frozen)",
+      "category": "Frozen",
+      "store": "Safeway",
+      "unit": "lbs"
+    },
+    {
+      "id": "46",
+      "name": "Mixed vegetables (frozen)",
+      "category": "Frozen",
+      "store": "Trader Joe's",
+      "unit": "lbs"
+    },
+    {
+      "id": "47",
+      "name": "Berries (mixed, frozen)",
+      "category": "Frozen",
+      "store": "Whole Foods",
+      "unit": "lbs"
+    },
+    {
+      "id": "48",
+      "name": "Black beans (canned)",
+      "category": "Canned & jarred",
+      "store": "Costco",
+      "unit": "can"
+    },
+    {
+      "id": "49",
+      "name": "Coconut milk (canned)",
+      "category": "Canned & jarred",
+      "store": "Walmart",
+      "unit": "can"
+    },
+    {
+      "id": "50",
+      "name": "Corn (cream-style cans)",
+      "category": "Canned & jarred",
+      "store": "Safeway",
+      "unit": "can"
+    }
+  ],
+  "publishedCarts": [
+    {
+      "id": "published-1763976555664",
+      "publishedAt": "2025-11-24T09:29:15.664Z",
+      "items": [
+        {
+          "id": "1-1763976496968",
+          "itemId": "1",
+          "name": "Tomatoes (roma)",
+          "store": "Walmart",
+          "quantity": 3,
+          "unit": "lbs",
+          "addedAt": "2025-11-24T09:28:16.968Z"
+        },
+        {
+          "id": "2-1763976499243",
+          "itemId": "2",
+          "name": "Onions (yellow)",
+          "store": "Costco",
+          "quantity": 45,
+          "unit": "lbs",
+          "addedAt": "2025-11-24T09:28:19.243Z"
+        }
+      ]
+    }
+  ]
+}

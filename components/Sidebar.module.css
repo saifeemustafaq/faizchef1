@@ -1,0 +1,68 @@
+.sidebar {
+  background: var(--ivory-card);
+  border-right: 2px solid var(--black-text);
+  padding: var(--space-lg) var(--space-base);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.sidebarHeader {
+  margin-bottom: var(--space-xl);
+  padding: 0 var(--space-sm);
+}
+
+.appTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--black-text);
+  line-height: 1.2;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-base);
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black-text);
+  text-align: left;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  background: var(--ivory-section);
+}
+
+.navItemActive {
+  background: var(--golden-main);
+  color: var(--black-text);
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+    border-right: none;
+    border-bottom: 2px solid var(--black-text);
+    min-height: auto;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: var(--space-base);
+  }
+}
+
