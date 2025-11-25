@@ -15,11 +15,21 @@ type Unit = {
   abbreviation: string;
 };
 
+type ExtraItem = {
+  id: string;
+  name: string;
+  store?: string;
+  category?: string;
+  unit: string;
+  addedAt: Date;
+};
+
 type DataStructure = {
   stores: string[];
   units: Unit[];
   items: Item[];
   publishedCarts?: PublishedCart[];
+  extraItemsHistory?: ExtraItem[];
 };
 
 type CartItem = {
@@ -43,12 +53,20 @@ type CartContextType = {
   loading: boolean;
   cart: CartItem[];
   publishedCarts: PublishedCart[];
+  extraItemsHistory: ExtraItem[];
   addToCart: (item: Item, quantity: number, unit: string) => void;
   updateCartQuantity: (cartItemId: string, newQuantity: number) => void;
   updateCartUnit: (cartItemId: string, newUnit: string) => void;
   removeFromCart: (cartItemId: string) => void;
   publishCart: () => Promise<void>;
   fetchData: () => Promise<void>;
+  updatePublishedCart: (cartId: string, updatedItems: CartItem[]) => Promise<void>;
+  deletePublishedCart: (cartId: string) => Promise<void>;
+  copyPublishedCartToCart: (cartId: string) => void;
+  addExtraItemToCart: (name: string, unit: string, quantity: number, store?: string, category?: string) => Promise<void>;
+  updateExtraItemHistory: (itemId: string, name: string, unit: string, store?: string, category?: string) => Promise<void>;
+  deleteExtraItemFromHistory: (itemId: string) => Promise<void>;
+  quickAddExtraItem: (itemId: string, quantity: number) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -58,6 +76,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [publishedCarts, setPublishedCarts] = useState<PublishedCart[]>([]);
+  const [extraItemsHistory, setExtraItemsHistory] = useState<ExtraItem[]>([]);
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -95,6 +114,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
             ...item,
             addedAt: new Date(item.addedAt)
           }))
+        })));
+      }
+
+      // Load extra items history if it exists
+      if (jsonData.extraItemsHistory) {
+        setExtraItemsHistory(jsonData.extraItemsHistory.map((item: ExtraItem) => ({
+          ...item,
+          addedAt: new Date(item.addedAt)
         })));
       }
     } catch (error) {
@@ -192,6 +219,137 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart([]);
   };
 
+  const updatePublishedCart = async (cartId: string, updatedItems: CartItem[]) => {
+    if (!data) return;
+
+    const updatedPublishedCarts = publishedCarts.map(cart =>
+      cart.id === cartId ? { ...cart, items: updatedItems } : cart
+    );
+
+    setPublishedCarts(updatedPublishedCarts);
+
+    // Save to backend
+    const updatedData = {
+      ...data,
+      publishedCarts: updatedPublishedCarts,
+    };
+    await saveData(updatedData);
+  };
+
+  const deletePublishedCart = async (cartId: string) => {
+    if (!data) return;
+
+    const updatedPublishedCarts = publishedCarts.filter(cart => cart.id !== cartId);
+    setPublishedCarts(updatedPublishedCarts);
+
+    // Save to backend
+    const updatedData = {
+      ...data,
+      publishedCarts: updatedPublishedCarts,
+    };
+    await saveData(updatedData);
+  };
+
+  const copyPublishedCartToCart = (cartId: string) => {
+    const publishedCart = publishedCarts.find(cart => cart.id === cartId);
+    if (!publishedCart) return;
+
+    // Create new cart items with new IDs and current timestamp
+    const copiedItems = publishedCart.items.map(item => ({
+      ...item,
+      id: `${item.itemId}-${Date.now()}-${Math.random()}`,
+      addedAt: new Date(),
+    }));
+
+    setCart(prev => [...prev, ...copiedItems]);
+  };
+
+  const addExtraItemToCart = async (name: string, unit: string, quantity: number, store?: string, category?: string) => {
+    if (!data) return;
+
+    // Create extra item for history
+    const extraItem: ExtraItem = {
+      id: `extra-${Date.now()}`,
+      name,
+      store,
+      category,
+      unit,
+      addedAt: new Date(),
+    };
+
+    // Add to history
+    const updatedHistory = [...extraItemsHistory, extraItem];
+    setExtraItemsHistory(updatedHistory);
+
+    // Add to current cart
+    const cartItem: CartItem = {
+      id: `${extraItem.id}-cart-${Date.now()}`,
+      itemId: extraItem.id,
+      name,
+      store: store || 'Not Assigned',
+      quantity,
+      unit,
+      addedAt: new Date(),
+    };
+
+    setCart(prev => [...prev, cartItem]);
+
+    // Save to backend
+    const updatedData = {
+      ...data,
+      extraItemsHistory: updatedHistory,
+    };
+    await saveData(updatedData);
+  };
+
+  const updateExtraItemHistory = async (itemId: string, name: string, unit: string, store?: string, category?: string) => {
+    if (!data) return;
+
+    const updatedHistory = extraItemsHistory.map(item =>
+      item.id === itemId
+        ? { ...item, name, unit, store, category }
+        : item
+    );
+
+    setExtraItemsHistory(updatedHistory);
+
+    const updatedData = {
+      ...data,
+      extraItemsHistory: updatedHistory,
+    };
+    await saveData(updatedData);
+  };
+
+  const deleteExtraItemFromHistory = async (itemId: string) => {
+    if (!data) return;
+
+    const updatedHistory = extraItemsHistory.filter(item => item.id !== itemId);
+    setExtraItemsHistory(updatedHistory);
+
+    const updatedData = {
+      ...data,
+      extraItemsHistory: updatedHistory,
+    };
+    await saveData(updatedData);
+  };
+
+  const quickAddExtraItem = (itemId: string, quantity: number) => {
+    const extraItem = extraItemsHistory.find(item => item.id === itemId);
+    if (!extraItem) return;
+
+    const cartItem: CartItem = {
+      id: `${extraItem.id}-cart-${Date.now()}`,
+      itemId: extraItem.id,
+      name: extraItem.name,
+      store: extraItem.store || 'Not Assigned',
+      quantity,
+      unit: extraItem.unit,
+      addedAt: new Date(),
+    };
+
+    setCart(prev => [...prev, cartItem]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -199,12 +357,20 @@ export function CartProvider({ children }: { children: ReactNode }) {
         loading,
         cart,
         publishedCarts,
+        extraItemsHistory,
         addToCart,
         updateCartQuantity,
         updateCartUnit,
         removeFromCart,
         publishCart,
         fetchData,
+        updatePublishedCart,
+        deletePublishedCart,
+        copyPublishedCartToCart,
+        addExtraItemToCart,
+        updateExtraItemHistory,
+        deleteExtraItemFromHistory,
+        quickAddExtraItem,
       }}
     >
       {children}

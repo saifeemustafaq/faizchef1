@@ -1,4 +1,161 @@
-.emptyState {
+/* Container */
+.container {
+  display: grid;
+  grid-template-columns: 1.2fr 2px 1fr;
+  gap: var(--space-2xl);
+  min-height: 70vh;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--black-secondary);
+}
+
+/* Sections */
+.formSection {
+  padding-right: var(--space-lg);
+}
+
+.historySection {
+  padding-left: var(--space-lg);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--black-text);
+  margin-bottom: var(--space-sm);
+}
+
+.sectionDescription {
+  font-size: 0.875rem;
+  color: var(--black-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+/* Vertical Divider */
+.divider {
+  width: 2px;
+  background: var(--black-text);
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Input Table - CSS Grid Based */
+.tableContainer {
+  background: var(--ivory-card);
+  border: 2px solid var(--black-text);
+  border-radius: 4px;
+  box-shadow: var(--shadow-retro);
+  overflow-x: auto;
+  margin-bottom: var(--space-xl);
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 1.5fr;
+  gap: var(--space-base);
+  padding: var(--space-base);
+  background: var(--ivory-section);
+  border-bottom: 2px solid var(--black-text);
+}
+
+.headerCell {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--black-text);
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 1.5fr;
+  gap: var(--space-base);
+  padding: var(--space-base);
+  border-bottom: 1px solid var(--ivory-border);
+  min-height: 60px;
+  align-items: center;
+  transition: background 0.2s ease-in-out;
+}
+
+.tableRow:hover {
+  background: var(--ivory-bg);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  display: flex;
+  align-items: center;
+}
+
+.tableInput,
+.tableSelect {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--black-text);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--black-text);
+  background: var(--ivory-bg);
+}
+
+.tableInput:focus,
+.tableSelect:focus {
+  border-color: var(--golden-main);
+  outline: 2px solid var(--golden-main);
+  outline-offset: 2px;
+}
+
+.tableInput::placeholder {
+  color: var(--black-tertiary);
+}
+
+.tableSelect {
+  cursor: pointer;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border: 2px solid var(--green-main);
+  background: var(--green-main);
+  color: var(--ivory-bg);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--shadow-retro);
+  width: 100%;
+}
+
+.submitButton:hover {
+  background: var(--green-hover);
+  border-color: var(--green-hover);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-retro-hover);
+}
+
+.submitButton:active {
+  background: var(--green-active);
+  border-color: var(--green-active);
+}
+
+/* History List */
+.emptyHistory {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,19 +164,315 @@
   padding: var(--space-3xl);
   text-align: center;
   color: var(--black-secondary);
-  min-height: 50vh;
+  border: 2px solid var(--ivory-border);
+  border-radius: 4px;
+  min-height: 300px;
 }
 
-.emptyState h2 {
-  font-size: 1.5rem;
+.emptyHistory p {
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--black-text);
   margin: 0;
 }
 
-.emptyState p {
-  font-size: 1rem;
+.emptyHistory span {
+  font-size: 0.875rem;
   color: var(--black-secondary);
-  margin: 0;
 }
 
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: var(--space-sm);
+}
+
+.historyCard {
+  background: var(--ivory-card);
+  border: 1px solid var(--ivory-border);
+  border-radius: 4px;
+  padding: 10px 14px;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: var(--space-sm);
+}
+
+.historyHeaderLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.historyItemName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--black-text);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.historyDate {
+  font-size: 0.825rem;
+  color: var(--black-tertiary);
+  margin-top: 3px;
+}
+
+.historyActions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.historyActionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--black-text);
+  background: transparent;
+  color: var(--black-text);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.historyActionButton:hover {
+  background: var(--ivory-section);
+}
+
+.deleteButton:hover {
+  background: var(--red-light);
+  border-color: var(--red-light);
+  color: var(--ivory-bg);
+}
+
+.historyDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px var(--space-base);
+  margin-bottom: 10px;
+  font-size: 0.975rem;
+}
+
+.historyDetail {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.historyLabel {
+  font-weight: 600;
+  color: var(--black-text);
+}
+
+.historyValue {
+  color: var(--black-secondary);
+}
+
+/* Quick Add Section */
+.quickAddSection {
+  display: flex;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--ivory-border);
+}
+
+.quickAddInput {
+  width: 72px;
+  padding: 7px 10px;
+  border: 1px solid var(--black-text);
+  border-radius: 4px;
+  font-size: 0.975rem;
+  color: var(--black-text);
+  background: var(--ivory-bg);
+  text-align: center;
+}
+
+.quickAddInput:focus {
+  border-color: var(--golden-main);
+  outline: 2px solid var(--golden-main);
+  outline-offset: 2px;
+}
+
+.quickAddButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid var(--green-main);
+  background: var(--green-main);
+  color: var(--ivory-bg);
+  border-radius: 4px;
+  font-size: 0.975rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  flex: 1;
+}
+
+.quickAddButton:hover {
+  background: var(--green-hover);
+  border-color: var(--green-hover);
+}
+
+/* Edit Mode */
+.editMode {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.editFields {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.editInput,
+.editSelect {
+  width: 100%;
+  padding: 7px 12px;
+  border: 1px solid var(--black-text);
+  border-radius: 4px;
+  font-size: 0.975rem;
+  color: var(--black-text);
+  background: var(--ivory-bg);
+}
+
+.editInput:focus,
+.editSelect:focus {
+  border-color: var(--golden-main);
+  outline: 2px solid var(--golden-main);
+  outline-offset: 2px;
+}
+
+.editActions {
+  display: flex;
+  gap: 6px;
+}
+
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid var(--golden-main);
+  background: var(--golden-main);
+  color: var(--black-text);
+  border-radius: 4px;
+  font-size: 0.975rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  flex: 1;
+}
+
+.saveButton:hover {
+  background: var(--golden-hover);
+  border-color: var(--golden-hover);
+}
+
+.cancelButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid var(--black-text);
+  background: transparent;
+  color: var(--black-text);
+  border-radius: 4px;
+  font-size: 0.975rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  flex: 1;
+}
+
+.cancelButton:hover {
+  background: var(--ivory-section);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .formSection,
+  .historySection {
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Hide table header on mobile */
+  .tableHeader {
+    display: none;
+  }
+
+  /* Convert rows to card layout */
+  .tableRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    border: 2px solid var(--ivory-border);
+    border-radius: 4px;
+    margin-bottom: var(--space-md);
+    padding: var(--space-base);
+  }
+
+  /* Add labels using data attributes */
+  .tableCell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--black-tertiary);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .tableCell {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .historyList {
+    max-height: none;
+  }
+
+  .historyHeader {
+    flex-wrap: wrap;
+  }
+
+  .historyHeaderLeft {
+    flex-basis: 100%;
+  }
+
+  .historyActions {
+    margin-left: auto;
+  }
+
+  .quickAddSection {
+    gap: var(--space-xs);
+  }
+
+  .quickAddInput {
+    width: 70px;
+  }
+}

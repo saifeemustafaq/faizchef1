@@ -273,6 +273,62 @@ Focus: Border-Color #D4AF37
 Error: Border-Color #8B3A3A
 ```
 
+### Dropdowns/Select Fields
+```
+Background: #FFFFF0
+Border: 2px solid #1A1A1A
+Border Radius: 4px
+Padding: 12px
+Font Size: 16px
+Color: #1A1A1A
+Cursor: pointer
+
+Focus: Border-Color #D4AF37
+       Outline: 2px solid #D4AF37 (offset 2px)
+
+Hover: Background #FAF8F3
+
+Arrow: Browser default or custom chevron icon
+```
+
+### Tables (Grid-Based)
+```
+Container:
+  Background: #FAF8F3
+  Border: 2px solid #1A1A1A
+  Border Radius: 4px
+  Box Shadow: 4px 4px 0px #1A1A1A
+  Overflow-X: auto
+
+Header Row:
+  Background: #F5F3ED (Darker Ivory)
+  Border-Bottom: 2px solid #1A1A1A
+  Font-Weight: 600
+  Text-Transform: uppercase
+  Letter-Spacing: 0.05em
+  Font-Size: 14px
+  Padding: 16px
+
+Data Row:
+  Border-Bottom: 1px solid #EBE8DC
+  Padding: 16px
+  Min-Height: 60px
+  Align-Items: center
+  Transition: background 0.2s
+
+  Hover: Background #FFFFF0
+
+Layout: Use CSS Grid
+  grid-template-columns: [custom widths for each column]
+  gap: 16px
+
+Responsive Mobile:
+  - Hide header row
+  - Convert rows to card layout
+  - Stack cells vertically
+  - Add borders around each row
+```
+
 ### Tags/Badges
 ```
 Background: #E5C158 (Golden Light)
@@ -301,6 +357,137 @@ Nav Item:
   
   Active: Background #D4AF37, Color #1A1A1A
   Hover: Background #F5F3ED
+```
+
+### Data Tables
+
+There are two main table patterns: **View Mode** (read-only display) and **Edit Mode** (with input fields).
+
+#### Table Container (Both Modes)
+```css
+background: #FAF8F3;
+border: 2px solid #1A1A1A;
+border-radius: 4px;
+box-shadow: 4px 4px 0px #1A1A1A;
+overflow-x: auto;
+```
+
+#### Table Header (Both Modes)
+```css
+display: grid;
+grid-template-columns: [define based on content];
+gap: 16px;
+padding: 16px;
+background: #F5F3ED;
+border-bottom: 2px solid #1A1A1A;
+font-size: 14px;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+```
+
+#### View Mode Table Row (Display Only)
+```css
+display: grid;
+grid-template-columns: [same as header];
+gap: 16px;
+padding: 16px;
+border-bottom: 1px solid #EBE8DC;
+min-height: 60px;
+align-items: center;
+
+Hover: background: #FFFFF0;
+Last Row: border-bottom: none;
+```
+
+**Use for:** Displaying data with badges, status indicators, view-only content
+
+#### Edit Mode Table Row (With Inputs)
+```css
+display: grid;
+grid-template-columns: 140px 1fr 1fr 1fr 180px; /* Example */
+gap: 16px;
+padding: 16px;
+border-bottom: 1px solid #EBE8DC;
+min-height: 60px;
+align-items: center;
+
+Cells contain: Input fields, action buttons
+Last Row: border-bottom: none;
+```
+
+**Input Fields in Table:**
+```css
+width: 100%;
+padding: 8px 12px;
+font-size: 14px;
+/* Inherits standard input styling */
+```
+
+**Action Buttons in Table:**
+```css
+/* Small button variant */
+padding: 6px 12px;
+font-size: 12px;
+gap: 4px;
+```
+
+**Use for:** Inline editing (menus, schedules, quick data entry)
+
+#### Example Grid Columns:
+```
+/* View Mode - Mixed content */
+grid-template-columns: 2fr 1fr 1fr 1fr 100px;
+
+/* Edit Mode - Day + Items + Actions */
+grid-template-columns: 140px 1fr 1fr 1fr 180px;
+
+/* All equal columns */
+grid-template-columns: repeat(4, 1fr);
+
+/* Custom widths */
+grid-template-columns: 100px 2fr 1fr 120px;
+```
+
+#### Mobile Responsive Pattern:
+```css
+@media (max-width: 767px) {
+  /* Hide table header */
+  .tableHeader {
+    display: none;
+  }
+  
+  /* Convert rows to cards */
+  .tableRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    border: 2px solid #EBE8DC;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  
+  /* Add labels using data attributes */
+  .cell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #4A4A4A;
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+```
+
+#### Bottom Table Actions
+```css
+/* For Save, Clear All, etc. */
+display: flex;
+gap: 16px;
+justify-content: center;
+margin-top: 16px;
+
+Mobile: flex-direction: column;
 ```
 
 ---
@@ -627,11 +814,34 @@ Design with these in mind:
 
 ---
 
+## Implementation Examples
+
+### Real Code References
+For working examples of these patterns, see:
+
+**Tables:** 
+- `/app/menu-management/` - Grid-based weekly menu table with responsive mobile cards
+- Patterns: CSS Grid layout, responsive breakpoints, row hover states
+
+**Dropdowns:** 
+- `/app/add-new-items/components/` - Unit, Category, Store selectors
+- Patterns: Standard select with custom styling, validation states
+
+**Modals:** 
+- `/app/add-new-items/components/` - Product, Category, Store modals
+- Patterns: Overlay, centered content, action buttons, close handlers
+
+**Cards:**
+- `/app/add-new-items/` - Product cards with actions
+- Patterns: Retro shadow, hover lift, consistent padding
+
+---
+
 ## Quick Reference
 
 ### Do's ✓
 - Use 2px borders everywhere
-- Add retro drop shadows to cards
+- Add retro drop shadows to cards (4px 4px 0px #1A1A1A)
 - Keep backgrounds ivory/warm
 - Use golden for primary actions
 - Use green for success/additions
@@ -639,17 +849,20 @@ Design with these in mind:
 - Add hover states to everything interactive
 - Use system fonts
 - Keep animations subtle
+- Use CSS Grid for tables (responsive + mobile-friendly)
+- Make tables responsive (grid on desktop, cards on mobile)
 
 ### Don'ts ✗
 - No gradients
 - No complex shadows (except retro drop shadow)
-- No rounded corners over 4px (except badges/pills)
+- No rounded corners over 4px (except badges/pills at 12px)
 - No thin borders (always 2px+)
 - No dark mode (light theme only)
 - No trendy effects (glassmorphism, neumorphism)
 - No icon fonts (use SVG from React libraries)
 - No animations over 0.3s
 - **ABSOLUTELY NO EMOJIS** - Use React icon libraries only
+- No HTML tables - use CSS Grid for better responsive control
 
 ---
 

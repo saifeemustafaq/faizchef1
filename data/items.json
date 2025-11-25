@@ -436,6 +436,40 @@
           "addedAt": "2025-11-24T09:28:19.243Z"
         }
       ]
+    },
+    {
+      "id": "published-1764008822301",
+      "publishedAt": "2025-11-24T18:27:02.301Z",
+      "items": [
+        {
+          "id": "1-1764008803443",
+          "itemId": "1",
+          "name": "Tomatoes (roma)",
+          "store": "Walmart",
+          "quantity": 3,
+          "unit": "case",
+          "addedAt": "2025-11-24T18:26:43.443Z"
+        },
+        {
+          "id": "2-1764008810320",
+          "itemId": "2",
+          "name": "Onions (yellow)",
+          "store": "Costco",
+          "quantity": 20,
+          "unit": "oz",
+          "addedAt": "2025-11-24T18:26:50.320Z"
+        }
+      ]
+    }
+  ],
+  "extraItemsHistory": [
+    {
+      "id": "extra-1764105436564",
+      "name": "asda",
+      "store": "as",
+      "category": "asda",
+      "unit": "lbs",
+      "addedAt": "2025-11-25T21:17:16.564Z"
     }
   ]
 }

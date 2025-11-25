@@ -74,9 +74,9 @@
 }
 
 .searchInput:focus {
-  outline: none;
   border-color: var(--golden-main);
-  box-shadow: 0 0 0 2px var(--golden-light);
+  outline: 2px solid var(--golden-main);
+  outline-offset: 2px;
 }
 
 .searchInput::placeholder {
@@ -293,9 +293,9 @@
 }
 
 .quantityInput:focus {
-  outline: none;
   border-color: var(--golden-main);
-  box-shadow: 0 0 0 2px var(--golden-light);
+  outline: 2px solid var(--golden-main);
+  outline-offset: 2px;
 }
 
 .quantityInput::placeholder {
@@ -315,9 +315,9 @@
 }
 
 .unitSelect:focus {
-  outline: none;
   border-color: var(--golden-main);
-  box-shadow: 0 0 0 2px var(--golden-light);
+  outline: 2px solid var(--golden-main);
+  outline-offset: 2px;
 }
 
 .addButton {
