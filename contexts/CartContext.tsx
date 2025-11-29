@@ -267,9 +267,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const addExtraItemToCart = async (name: string, unit: string, quantity: number, store?: string, category?: string) => {
     if (!data) return;
 
+    const uniqueId = `extra-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
     // Create extra item for history
     const extraItem: ExtraItem = {
-      id: `extra-${Date.now()}`,
+      id: uniqueId,
       name,
       store,
       category,

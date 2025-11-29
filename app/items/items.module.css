@@ -212,7 +212,7 @@
 /* Items Grid */
 .itemsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
   padding: var(--space-lg);
   background: var(--ivory-card);
@@ -275,21 +275,54 @@
   border-top: 1px solid var(--ivory-border);
 }
 
-.quantityUnitRow {
+/* Quick Add Buttons */
+.quickAddRow {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+}
+
+.quickAddButton {
+  flex: 1;
+  padding: 6px 4px;
+  border: 2px solid var(--black-text);
+  background: var(--ivory-card);
+  color: var(--black-text);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  min-width: 0;
+}
+
+.quickAddButton:hover {
+  background: var(--golden-light);
+  border-color: var(--golden-main);
+  transform: scale(1.05);
+}
+
+.quickAddButton:active {
+  background: var(--golden-main);
+  transform: scale(0.98);
+}
+
+/* Controls Row */
+.controlsRow {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
 }
 
 .quantityInput {
-  flex: 1;
-  padding: var(--space-sm) var(--space-md);
+  width: 60px;
+  padding: 6px 8px;
   border: 2px solid var(--black-text);
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--black-text);
   background: var(--ivory-bg);
-  min-width: 0;
+  text-align: center;
 }
 
 .quantityInput:focus {
@@ -300,18 +333,20 @@
 
 .quantityInput::placeholder {
   color: var(--black-tertiary);
+  font-size: 0.75rem;
 }
 
 .unitSelect {
-  padding: var(--space-sm) var(--space-md);
+  padding: 6px 8px;
   border: 2px solid var(--black-text);
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--black-text);
   background: var(--ivory-bg);
   cursor: pointer;
-  min-width: 80px;
+  flex: 1;
+  min-width: 0;
 }
 
 .unitSelect:focus {
@@ -321,26 +356,31 @@
 }
 
 .addButton {
-  width: 100%;
-  padding: var(--space-md) var(--space-base);
+  padding: 6px var(--space-base);
   border: 2px solid var(--green-main);
   background: var(--green-main);
   color: var(--ivory-bg);
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
-.addButton:hover {
+.addButton:hover:not(:disabled) {
   background: var(--green-hover);
   border-color: var(--green-hover);
 }
 
-.addButton:active {
+.addButton:active:not(:disabled) {
   background: var(--green-active);
   border-color: var(--green-active);
+}
+
+.addButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Loading State */
@@ -355,13 +395,23 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1280px) {
+  .itemsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .itemsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
+  .itemsGrid {
+    grid-template-columns: 1fr;
+  }
+
   .contentHeader {
     flex-direction: column;
     align-items: flex-start;
@@ -386,6 +436,29 @@
   .itemsGrid {
     grid-template-columns: 1fr;
     gap: var(--space-base);
+  }
+
+  .quickAddButton {
+    font-size: 0.7rem;
+    padding: 5px 3px;
+  }
+
+  .controlsRow {
+    flex-wrap: wrap;
+  }
+
+  .quantityInput {
+    width: 70px;
+  }
+
+  .unitSelect {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .addButton {
+    flex-basis: 100%;
+    width: 100%;
   }
 }
 

@@ -82,6 +82,13 @@ export default function ItemsPage() {
     }));
   };
 
+  const handleQuickAdd = (itemId: string, amount: number) => {
+    setItemQuantities(prev => ({
+      ...prev,
+      [itemId]: (prev[itemId] || 0) + amount
+    }));
+  };
+
   const handleUnitChange = (itemId: string, unit: string) => {
     setItemUnits(prev => ({
       ...prev,
@@ -212,7 +219,20 @@ export default function ItemsPage() {
                         </div>
                         
                         <div className={styles.addToCartSection}>
-                          <div className={styles.quantityUnitRow}>
+                          <div className={styles.quickAddRow}>
+                            {[1, 5, 10, 20, 50].map((amount) => (
+                              <button
+                                key={amount}
+                                className={styles.quickAddButton}
+                                onClick={() => handleQuickAdd(item.id, amount)}
+                                title={`Add ${amount} to quantity`}
+                              >
+                                +{amount}
+                              </button>
+                            ))}
+                          </div>
+                          
+                          <div className={styles.controlsRow}>
                             <input
                               type="number"
                               min="0"
@@ -233,14 +253,15 @@ export default function ItemsPage() {
                                 </option>
                               ))}
                             </select>
+                            
+                            <button
+                              className={styles.addButton}
+                              onClick={() => handleAddToCart(item)}
+                              disabled={currentQuantity === 0}
+                            >
+                              Add
+                            </button>
                           </div>
-                          
-                          <button
-                            className={styles.addButton}
-                            onClick={() => handleAddToCart(item)}
-                          >
-                            Add
-                          </button>
                         </div>
                       </div>
                     );

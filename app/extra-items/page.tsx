@@ -69,14 +69,22 @@ export default function ExtraItemsPage() {
         alert(`Invalid quantity for ${row.name}`);
         return;
       }
+    }
 
+    // Add all items with a small delay between each to ensure unique IDs
+    for (let i = 0; i < filledRows.length; i++) {
+      const row = filledRows[i];
       await addExtraItemToCart(
         row.name.trim(),
         row.unit,
-        quantity,
+        parseFloat(row.quantity),
         row.store.trim() || undefined,
         row.category.trim() || undefined
       );
+      // Small delay to ensure unique timestamps
+      if (i < filledRows.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 10));
+      }
     }
 
     // Clear all rows
@@ -157,7 +165,15 @@ export default function ExtraItemsPage() {
   }
 
   return (
-    <div className={styles.container}>
+    <>
+      <div className={styles.pageHeader}>
+        <h1 className={styles.pageTitle}>Extra Items</h1>
+        <p className={styles.pageDescription}>
+          Add custom items that aren't in the main inventory
+        </p>
+      </div>
+
+      <div className={styles.container}>
       {/* Left Section - Input Table */}
       <div className={styles.formSection}>
         <h2 className={styles.sectionTitle}>Add Custom Items</h2>
@@ -295,11 +311,11 @@ export default function ExtraItemsPage() {
                     </div>
                     <div className={styles.editActions}>
                       <button onClick={handleSaveEdit} className={styles.saveButton}>
-                        <Save size={17} />
+                        <Save size={20} strokeWidth={2} />
                         Save
                       </button>
                       <button onClick={handleCancelEdit} className={styles.cancelButton}>
-                        <X size={17} />
+                        <X size={20} strokeWidth={2} />
                         Cancel
                       </button>
                     </div>
@@ -318,14 +334,14 @@ export default function ExtraItemsPage() {
                           className={styles.historyActionButton}
                           title="Edit"
                         >
-                          <Edit2 size={17} strokeWidth={2} />
+                          <Edit2 size={20} strokeWidth={2} />
                         </button>
                         <button
                           onClick={() => handleDeleteItem(item.id)}
                           className={`${styles.historyActionButton} ${styles.deleteButton}`}
                           title="Delete"
                         >
-                          <Trash2 size={17} strokeWidth={2} />
+                          <Trash2 size={20} strokeWidth={2} />
                         </button>
                       </div>
                     </div>
@@ -362,7 +378,7 @@ export default function ExtraItemsPage() {
                         className={styles.quickAddButton}
                         title="Quick add to cart"
                       >
-                        <Plus size={17} strokeWidth={2} />
+                        <Plus size={20} strokeWidth={2} />
                         Quick Add
                       </button>
                     </div>
@@ -374,5 +390,6 @@ export default function ExtraItemsPage() {
         )}
       </div>
     </div>
+    </>
   );
 }

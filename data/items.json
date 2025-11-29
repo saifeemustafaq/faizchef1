@@ -460,6 +460,153 @@
           "addedAt": "2025-11-24T18:26:50.320Z"
         }
       ]
+    },
+    {
+      "id": "published-1764121370678",
+      "publishedAt": "2025-11-26T01:42:50.678Z",
+      "items": [
+        {
+          "id": "extra-1764105436564-cart-1764105436564",
+          "itemId": "extra-1764105436564",
+          "name": "asda",
+          "store": "as",
+          "quantity": 12,
+          "unit": "lbs",
+          "addedAt": "2025-11-25T21:17:16.564Z"
+        },
+        {
+          "id": "1-1764107301342-0.4306280550343554",
+          "itemId": "1",
+          "name": "Tomatoes (roma)",
+          "store": "Walmart",
+          "quantity": 3,
+          "unit": "case",
+          "addedAt": "2025-11-25T21:48:21.342Z"
+        },
+        {
+          "id": "2-1764107301342-0.3702747704382561",
+          "itemId": "2",
+          "name": "Onions (yellow)",
+          "store": "Costco",
+          "quantity": 20,
+          "unit": "oz",
+          "addedAt": "2025-11-25T21:48:21.342Z"
+        },
+        {
+          "id": "1-1764107440576-0.8003903609088193",
+          "itemId": "1",
+          "name": "Tomatoes (roma)",
+          "store": "Walmart",
+          "quantity": 3,
+          "unit": "lbs",
+          "addedAt": "2025-11-25T21:50:40.577Z"
+        },
+        {
+          "id": "2-1764107440577-0.14228841208654674",
+          "itemId": "2",
+          "name": "Onions (yellow)",
+          "store": "Costco",
+          "quantity": 45,
+          "unit": "lbs",
+          "addedAt": "2025-11-25T21:50:40.577Z"
+        },
+        {
+          "id": "2-1764113230204",
+          "itemId": "2",
+          "name": "Onions (yellow)",
+          "store": "Costco",
+          "quantity": 15,
+          "unit": "lbs",
+          "addedAt": "2025-11-25T23:27:10.204Z"
+        },
+        {
+          "id": "3-1764113234386",
+          "itemId": "3",
+          "name": "Potatoes (russet)",
+          "store": "Safeway",
+          "quantity": 16,
+          "unit": "bunch",
+          "addedAt": "2025-11-25T23:27:14.386Z"
+        },
+        {
+          "id": "extra-1764121077854-cart-1764121077854",
+          "itemId": "extra-1764121077854",
+          "name": "qwd",
+          "store": "rbg",
+          "quantity": 1,
+          "unit": "gal",
+          "addedAt": "2025-11-26T01:37:57.854Z"
+        },
+        {
+          "id": "extra-1764121077871-cart-1764121077871",
+          "itemId": "extra-1764121077871",
+          "name": "vds",
+          "store": "wer",
+          "quantity": 11,
+          "unit": "pkt",
+          "addedAt": "2025-11-26T01:37:57.871Z"
+        },
+        {
+          "id": "extra-1764121077880-cart-1764121077880",
+          "itemId": "extra-1764121077880",
+          "name": "weds",
+          "store": "bfd",
+          "quantity": 1,
+          "unit": "case",
+          "addedAt": "2025-11-26T01:37:57.880Z"
+        },
+        {
+          "id": "extra-1764121352595-t2h5502u1-cart-1764121352595",
+          "itemId": "extra-1764121352595-t2h5502u1",
+          "name": "qqq",
+          "store": "qfe",
+          "quantity": 5,
+          "unit": "lbs",
+          "addedAt": "2025-11-26T01:42:32.595Z"
+        },
+        {
+          "id": "extra-1764121352623-a0exbz5zb-cart-1764121352623",
+          "itemId": "extra-1764121352623-a0exbz5zb",
+          "name": "qqd",
+          "store": "qvd",
+          "quantity": 5,
+          "unit": "lbs",
+          "addedAt": "2025-11-26T01:42:32.623Z"
+        }
+      ]
+    },
+    {
+      "id": "published-1764124285569",
+      "publishedAt": "2025-11-26T02:31:25.569Z",
+      "items": [
+        {
+          "id": "1-1764124276821",
+          "itemId": "1",
+          "name": "Tomatoes (roma)",
+          "store": "Walmart",
+          "quantity": 20,
+          "unit": "lbs",
+          "addedAt": "2025-11-26T02:31:16.821Z"
+        },
+        {
+          "id": "2-1764124277877",
+          "itemId": "2",
+          "name": "Onions (yellow)",
+          "store": "Costco",
+          "quantity": 5,
+          "unit": "lbs",
+          "addedAt": "2025-11-26T02:31:17.877Z"
+        },
+        {
+          "id": "3-1764124281564",
+          "itemId": "3",
+          "name": "Potatoes (russet)",
+          "store": "Safeway",
+          "quantity": 30,
+          "unit": "case",
+          "addedAt": "2025-11-26T02:31:21.564Z"
+        }
+      ]
     }
   ],
   "extraItemsHistory": [
@@ -470,6 +617,22 @@
       "category": "asda",
       "unit": "lbs",
       "addedAt": "2025-11-25T21:17:16.564Z"
+    },
+    {
+      "id": "extra-1764121077880",
+      "name": "weds",
+      "store": "bfd",
+      "category": "erw",
+      "unit": "case",
+      "addedAt": "2025-11-26T01:37:57.880Z"
+    },
+    {
+      "id": "extra-1764121352623-a0exbz5zb",
+      "name": "qqd",
+      "store": "qvd",
+      "category": "2fw",
+      "unit": "lbs",
+      "addedAt": "2025-11-26T01:42:32.623Z"
     }
   ]
 }
